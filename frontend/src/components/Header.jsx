@@ -52,31 +52,34 @@ export default function Header() {
           </p>
         </div>
       </div>
-      <div className="border-y border-gray-400 flex justify-between items-center mx-6 py-4">
-        <button className="text-2xl font-semibold px-2 rounded-lg text-blue-600 ">
-          Zayra
-        </button>
-        <div className="w-[50%] flex justify-between items-center gap-2 px-4 border border-gray-500  rounded-xl">
-          <input
-            placeholder="Search for products.."
-            className="w-[80%] outline-none pr-4 py-2 text-start text-gray-700"
-          />
-          <Search size={22} className="text-gray-600" />
-        </div>
-        <div className="flex justify-between items-center gap-6">
-          <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
-            <User /> Account
+      <div className="hidden md:block">
+        <div className="border-y border-gray-400 flex justify-between items-center mx-6 py-4">
+          <button className="text-2xl font-semibold px-2 rounded-lg text-blue-600 ">
+            Zayra
           </button>
-          <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
-            <Heart /> Wishlist
-          </button>
-          <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
-            <ShoppingCart /> Cart
-          </button>
+          <div className="w-[50%] flex justify-between items-center gap-2 px-4 border border-gray-500  rounded-xl">
+            <input
+              placeholder="Search for products.."
+              className="w-[80%] outline-none pr-4 py-2 text-start text-gray-700"
+            />
+            <Search size={22} className="text-gray-600" />
+          </div>
+          <div className="flex justify-between items-center gap-6">
+            <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
+              <User /> Account
+            </button>
+            <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
+              <Heart /> Wishlist
+            </button>
+            <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
+              <ShoppingCart /> Cart
+            </button>
+          </div>
         </div>
       </div>
+
       {/* Categories section in Header  */}
-      <div className="">
+      <div className="hidden md:block">
         <ul className="flex justify-start gap-8 px-6 py-2">
           {categoryArr.map((c, index) => (
             <li
