@@ -1,5 +1,14 @@
 import React from "react";
-import { Heart, Mail, Phone, Search, ShoppingCart, User } from "lucide-react";
+import {
+  Heart,
+  Mail,
+  Menu,
+  Phone,
+  Search,
+  ShoppingCart,
+  User,
+} from "lucide-react";
+import { Link } from "react-router";
 
 export default function Header() {
   const categoryArr = [
@@ -38,25 +47,29 @@ export default function Header() {
     },
   ];
   return (
-    <header className=" py-1 border-t-4 border-blue-500 shadow-md">
-      <div className="px-6 flex justify-between items-center">
+    <header className=" py-1 border-t-4 border-blue-500 shadow-md fixed w-full bg-white z-50 ">
+      <div className="px-6 flex justify-between items-center ">
         <p className="text-base font-medium text-gray-600">
           Welcome to Zayra Store!
         </p>
-        <div className="flex justify-center items-center gap-4">
-          <p className="flex items-center gap-1 text-gray-600">
-            <Phone size={16} className="text-blue-600" /> +91-620728872
-          </p>
-          <p className="flex items-center gap-1 text-gray-600">
-            <Mail size={16} className="text-blue-600" /> support@zayra.com
-          </p>
+        <div className="hidden sm:block">
+          <div className="flex justify-center items-center gap-4">
+            <p className="flex items-center gap-1 text-gray-600">
+              <Phone size={16} className="text-blue-600" /> +91-620728872
+            </p>
+            <p className="flex items-center gap-1 text-gray-600">
+              <Mail size={16} className="text-blue-600" /> support@zayra.com
+            </p>
+          </div>
         </div>
       </div>
-      <div className="hidden md:block">
+      <div className="hidden md:block ">
         <div className="border-y border-gray-400 flex justify-between items-center mx-6 py-4">
-          <button className="text-2xl font-semibold px-2 rounded-lg text-blue-600 ">
-            Zayra
-          </button>
+          <Link to="/">
+            <button className="text-2xl font-semibold px-2 rounded-lg text-blue-600 cursor-pointer hover:shadow-sm">
+              Zayra
+            </button>
+          </Link>
           <div className="w-[50%] flex justify-between items-center gap-2 px-4 border border-gray-500  rounded-xl">
             <input
               placeholder="Search for products.."
@@ -79,7 +92,7 @@ export default function Header() {
       </div>
 
       {/* Categories section in Header  */}
-      <div className="hidden md:block">
+      <div className="hidden lg:block ">
         <ul className="flex justify-start gap-8 px-6 py-2">
           {categoryArr.map((c, index) => (
             <li
@@ -92,6 +105,19 @@ export default function Header() {
         </ul>
       </div>
       {/* for mobile and small screen view  */}
+      <div className="block md:hidden">
+        <div className="px-6 flex justify-between border-t border-gray-400 py-2">
+          <div className="flex flex-row items-center gap-4">
+            <Menu />
+            <Link to="/" className="text-2xl font-semibold text-blue-600">
+              Zayra
+            </Link>
+          </div>
+          <div className="">
+            <ShoppingCart />
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
