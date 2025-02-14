@@ -11,56 +11,57 @@ import {
   Volleyball,
 } from "lucide-react";
 import ElectronicsProducts from "../components/Products/ElectronicsProducts";
+import PostProduct from "../components/Products/PostProduct";
 
 export default function HomePage() {
   const categoryArr = [
     {
       name: "Electronics",
       link: "xx",
-      icon: <TabletSmartphone />,
+      icon: <TabletSmartphone size={36} />,
       offer: "20% Off",
     },
     {
       name: "Apparel",
       link: "xx",
-      icon: <Shirt />,
+      icon: <Shirt size={36} />,
       offer: "New Arrivals",
     },
     {
       name: "Home & Living",
       link: "xx",
-      icon: <BedDouble />,
+      icon: <BedDouble size={36} />,
       offer: "30% Off",
     },
 
     {
       name: "Beauty",
       link: "xx",
-      icon: <Flower />,
+      icon: <Flower size={36} />,
       offer: "Trending Now",
     },
     {
       name: "Toys",
       link: "xx",
-      icon: <Shapes />,
+      icon: <Shapes size={36} />,
       offer: "15% Off",
     },
     {
       name: "Books",
       link: "xx",
-      icon: <Book />,
+      icon: <Book size={36} />,
       offer: "Buy 2 Get 1",
     },
     {
       name: "Sports",
       link: "xx",
-      icon: <Volleyball />,
+      icon: <Volleyball size={36} />,
       offer: "40% Off",
     },
     {
       name: "More",
       link: "xx",
-      icon: <ArrowUpZA />,
+      icon: <ArrowUpZA size={36} />,
       offer: "Upcoming Items",
     },
   ];
@@ -113,9 +114,9 @@ export default function HomePage() {
         {categoryArr.map((c, index) => (
           <div
             key={index}
-            className="group flex flex-col gap-2 items-center justify-center p-4 bg-gray-100 border border-gray-100 rounded-xl cursor-pointer hover:shadow-md"
+            className="group flex flex-col gap-2 items-center justify-center p-8 bg-gray-100 border border-gray-100 rounded-xl cursor-pointer hover:scale-105 transition-all duration-100 hover:shadow-md"
           >
-            <span className="text-blue-600 bg-pink-200 p-4 rounded-full group-hover:bg-pink-300">
+            <span className="text-gray-600 bg-pink-300 p-4 rounded-full group-hover:bg-pink-400">
               {c.icon}
             </span>
             <h4 className="text-lg font-semibold text-gray-800">{c.name}</h4>
@@ -130,6 +131,7 @@ export default function HomePage() {
         </p>
       </div>
       <ElectronicsProducts />
+      <PostProduct />
     </div>
   );
 }

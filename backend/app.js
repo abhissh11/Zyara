@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
+import uploadImgRoutes from "./routes/uploadImgRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
   res.send("Zyra server is running..");
 });
 app.use("/api/products", productRoutes);
+app.use("/api/upload", uploadImgRoutes);
 
 const PORT = 3000;
 

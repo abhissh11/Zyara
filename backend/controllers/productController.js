@@ -13,7 +13,7 @@ export const createProduct = async (req, res) => {
       description,
       price,
       stock,
-      image,
+      image, // Use `image` instead of `imageUrl`
     });
 
     const createdProduct = await product.save();

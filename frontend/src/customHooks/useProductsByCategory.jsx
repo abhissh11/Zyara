@@ -16,7 +16,7 @@ const useProductByCategory = (category) => {
         }
         const data = await res.json();
         setProducts(data);
-        console.log(products);
+        // console.log(products);
       } catch (error) {
         setError(error.message);
       } finally {
