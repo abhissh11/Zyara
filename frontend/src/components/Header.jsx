@@ -12,39 +12,13 @@ import { Link } from "react-router";
 
 export default function Header() {
   const categoryArr = [
-    {
-      name: "Electronics",
-      link: "xx",
-    },
-    {
-      name: "Apparel",
-      link: "xx",
-    },
-    {
-      name: "Home & Living",
-      link: "xx",
-    },
-
-    {
-      name: "Beauty",
-      link: "xx",
-    },
-    {
-      name: "Toys",
-      link: "xx",
-    },
-    {
-      name: "Books",
-      link: "xx",
-    },
-    {
-      name: "Sports",
-      link: "xx",
-    },
-    {
-      name: "More",
-      link: "xx",
-    },
+    { name: "Electronics", link: "electronics" },
+    { name: "Apparels", link: "apparels" },
+    { name: "Home & Living", link: "home-living" },
+    { name: "Beauty", link: "beauty" },
+    { name: "Toys", link: "toys" },
+    { name: "Books", link: "books" },
+    { name: "Sports", link: "sports" },
   ];
   return (
     <header className=" py-1 border-t-4 border-blue-500 shadow-md fixed w-full bg-white z-50 ">
@@ -99,7 +73,7 @@ export default function Header() {
               key={index}
               className="text-base font-serif font-normal text-gray-800 hover:text-blue-500 cursor-pointer"
             >
-              {c.name}
+              <Link to={`/categories?name=${c.link}`}>{c.name}</Link>
             </li>
           ))}
         </ul>

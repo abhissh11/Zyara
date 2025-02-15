@@ -12,55 +12,56 @@ import {
 } from "lucide-react";
 import ProductByCat from "../components/Products/ProductByCat";
 // import ElectronicsProducts from "../components/Products/ElectronicsProducts";
+import { Link } from "react-router";
 
 export default function HomePage() {
   const categoryArr = [
     {
       name: "Electronics",
-      link: "xx",
+      link: "electronics",
       icon: <TabletSmartphone size={36} />,
       offer: "20% Off",
     },
     {
-      name: "Apparel",
-      link: "xx",
+      name: "Apparels",
+      link: "apparels",
       icon: <Shirt size={36} />,
       offer: "New Arrivals",
     },
     {
       name: "Home & Living",
-      link: "xx",
+      link: "home-living",
       icon: <BedDouble size={36} />,
       offer: "30% Off",
     },
 
     {
       name: "Beauty",
-      link: "xx",
+      link: "beauty",
       icon: <Flower size={36} />,
       offer: "Trending Now",
     },
     {
       name: "Toys",
-      link: "xx",
+      link: "toys",
       icon: <Shapes size={36} />,
       offer: "15% Off",
     },
     {
       name: "Books",
-      link: "xx",
+      link: "books",
       icon: <Book size={36} />,
       offer: "Buy 2 Get 1",
     },
     {
       name: "Sports",
-      link: "xx",
+      link: "sports",
       icon: <Volleyball size={36} />,
       offer: "40% Off",
     },
     {
       name: "More",
-      link: "xx",
+      link: "sports",
       icon: <ArrowUpZA size={36} />,
       offer: "Upcoming Items",
     },
@@ -75,9 +76,11 @@ export default function HomePage() {
               <p className="text-white text-lg font-normal">
                 Up to 40% off on selected items
               </p>
-              <button className="text-lg font-normal px-6 py-2 rounded-xl text-blue-600 bg-white cursor-pointer hover:bg-gray-100">
-                Shop now
-              </button>
+              <Link to={`/categories?name=electronics`}>
+                <button className="text-lg font-normal px-6 py-2 rounded-xl text-blue-600 bg-white cursor-pointer hover:bg-gray-100">
+                  Shop now
+                </button>
+              </Link>
             </div>
             <span className="text-xl text-white">
               <TabletSmartphone
@@ -92,9 +95,11 @@ export default function HomePage() {
               <p className="text-white text-lg font-normal">
                 New arrivals every day
               </p>
-              <button className="text-lg font-normal px-6 py-2 rounded-xl text-pink-600 bg-white cursor-pointer hover:bg-gray-100">
-                Shop now
-              </button>
+              <Link to={`/categories?name=apparels`}>
+                <button className="text-lg font-normal px-6 py-2 rounded-xl text-pink-600 bg-white cursor-pointer hover:bg-gray-100">
+                  Shop now
+                </button>
+              </Link>
             </div>
             <span className="text-xl text-white">
               <Shirt size={60} className="text-gray-200 opacity-45" />{" "}
@@ -116,16 +121,17 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-14">
           {categoryArr.map((c, index) => (
-            <div
-              key={index}
-              className="group flex flex-col gap-2 items-center justify-center p-8 bg-gray-100 border border-gray-100 rounded-xl cursor-pointer hover:scale-105 transition-all duration-100 hover:shadow-md"
-            >
-              <span className="text-gray-600 bg-pink-300 p-4 rounded-full group-hover:bg-pink-400">
-                {c.icon}
-              </span>
-              <h4 className="text-lg font-semibold text-gray-800">{c.name}</h4>
-              <p className="text-base font-normal text-gray-500">{c.offer}</p>
-            </div>
+            <Link to={`/categories?name=${c.link}`} key={index}>
+              <div className="group flex flex-col gap-2 items-center justify-center p-8 bg-gray-100 border border-gray-100 rounded-xl cursor-pointer hover:scale-105 transition-all duration-100 hover:shadow-md">
+                <span className="text-gray-600 bg-pink-300 p-4 rounded-full group-hover:bg-pink-400">
+                  {c.icon}
+                </span>
+                <h4 className="text-lg font-semibold text-gray-800">
+                  {c.name}
+                </h4>
+                <p className="text-base font-normal text-gray-500">{c.offer}</p>
+              </div>
+            </Link>
           ))}
         </div>
         <div className="py-20 text-center flex flex-col gap-4">
