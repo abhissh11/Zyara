@@ -116,6 +116,8 @@ export default function PostProduct() {
         <option value="electronics">Electronics</option>
         <option value="books">Books</option>
         <option value="toys">Toys</option>
+        <option value="home-living">Home-Living</option>
+        <option value="beauty">Beauty</option>
         <option value="sports">Sports</option>
       </select>
       <input

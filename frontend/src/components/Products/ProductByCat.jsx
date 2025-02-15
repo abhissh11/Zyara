@@ -13,25 +13,25 @@ export default function ProductByCat({ category }) {
         {products.map((product) => (
           <div
             key={product._id}
-            className="flex flex-col hover:scale-105 transition-all duration-150 hover:shadow-md cursor-pointer border border-gray-200 p-2 md:p-6 items-center justify-between rounded-sm hover:rounded-xl"
+            className="flex flex-col hover:scale-105 transition-all duration-150 hover:shadow-md cursor-pointer border border-gray-200 p-2 md:p-3 items-center justify-between rounded-sm hover:rounded-xl"
           >
             <div className="bg-gray-100 w-[90%] flex items-center justify-center shadow-sm rounded-md">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-48"
+                className="w-full h-48 rounded-sm"
               />
             </div>
-            <div className="">
+            <div className="w-full flex flex-col agp-2">
               <h3 className="text-lg font-semibold text-gray-900">
                 {product.name}
               </h3>
               <p className="text-gray-600 text-sm font-normal">
                 {product.description}
               </p>
-              <div className="flex justify-between items-center w-full">
-                <p className="text-lg font-bold text-gray-800">
-                  ${product.price}
+              <div className="flex gap-2 justify-between items-center w-full">
+                <p className="text-lg font-semibold text-gray-800">
+                  ₹ {product.price}
                 </p>
                 <button className="px-2 py-1  bg-blue-500 rounded-lg text-white flex items-center gap-1 cursor-pointer hover:bg-blue-600">
                   Add{" "}
