@@ -10,8 +10,8 @@ import {
   TabletSmartphone,
   Volleyball,
 } from "lucide-react";
-import ElectronicsProducts from "../components/Products/ElectronicsProducts";
-import PostProduct from "../components/Products/PostProduct";
+import ProductByCat from "../components/Products/ProductByCat";
+// import ElectronicsProducts from "../components/Products/ElectronicsProducts";
 
 export default function HomePage() {
   const categoryArr = [
@@ -107,7 +107,7 @@ export default function HomePage() {
             Discover our handpicked selection of top products
           </p>
         </div>
-        <ElectronicsProducts />
+        <ProductByCat category={"electronics"} />
         <div className="py-20 text-center flex flex-col gap-4">
           <h2 className="text-3xl font-bold ">Top categories</h2>
           <p className="text-lg font-normal text-gray-600">
@@ -134,7 +134,10 @@ export default function HomePage() {
             Discover what's popular right now
           </p>
         </div>
-        <ElectronicsProducts />
+        <div className="flex flex-col gap-8">
+          <ProductByCat category={"apparels"} />
+          <ProductByCat category={"books"} />
+        </div>
       </div>
     </div>
   );
