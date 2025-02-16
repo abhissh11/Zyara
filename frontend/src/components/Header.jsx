@@ -9,6 +9,7 @@ import {
   User,
 } from "lucide-react";
 import { Link } from "react-router";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const categoryArr = [
@@ -20,6 +21,7 @@ export default function Header() {
     { name: "Books", link: "books" },
     { name: "Sports", link: "sports" },
   ];
+  const { totalQuantity } = useSelector((state) => state.cart);
   return (
     <header className=" py-1 border-t-4 border-blue-500 shadow-md fixed w-full bg-white z-50 ">
       <div className="px-6 flex justify-between items-center ">
@@ -37,7 +39,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="hidden md:block ">
+      <div className="hidden md:block relative">
         <div className="border-y border-gray-400 flex justify-between items-center mx-6 py-4">
           <Link to="/">
             <button className="text-2xl font-semibold px-2 rounded-lg text-blue-600 cursor-pointer hover:shadow-sm">
@@ -58,9 +60,14 @@ export default function Header() {
             <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
               <Heart /> Wishlist
             </button>
-            <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
-              <ShoppingCart /> Cart
-            </button>
+            <Link to="/cart" className="">
+              <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
+                <span className="absolute top-2 right-6 bg-blue-600 text-white text-sm font-semibold px-2 h-fit rounded-full">
+                  {totalQuantity}
+                </span>
+                <ShoppingCart size={32} />
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -79,7 +86,7 @@ export default function Header() {
         </ul>
       </div>
       {/* for mobile and small screen view  */}
-      <div className="block md:hidden">
+      <div className="block md:hidden relative">
         <div className="px-6 flex justify-between border-t border-gray-400 py-2">
           <div className="flex flex-row items-center gap-4">
             <Menu />
@@ -88,7 +95,12 @@ export default function Header() {
             </Link>
           </div>
           <div className="">
-            <ShoppingCart />
+            <Link to="/cart">
+              <span className="absolute top-2 right-11 bg-blue-600 text-white text-sm font-semibold px-2 h-fit rounded-full">
+                {totalQuantity}
+              </span>
+              <ShoppingCart />
+            </Link>
           </div>
         </div>
       </div>

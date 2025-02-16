@@ -1,11 +1,15 @@
 import { ShoppingCart } from "lucide-react";
 import useProductByCategory from "../../customHooks/useProductsByCategory";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 export default function ProductByCat({ category }) {
   const { products, loading, error } = useProductByCategory(`${category}`);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const dispatch = useDispatch();
+
+  if (loading) return <p>Loading products...</p>;
+  if (error) return <p>Error fetching products: {error}</p>;
 
   return (
     <div className="">
@@ -19,7 +23,7 @@ export default function ProductByCat({ category }) {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-48 rounded-sm"
+                className="w-full h-48 rounded-sm text-xs text-gray-400"
               />
             </div>
             <div className="w-full flex flex-col agp-2">
@@ -33,7 +37,10 @@ export default function ProductByCat({ category }) {
                 <p className="text-lg font-semibold text-gray-800">
                   ₹ {product.price}
                 </p>
-                <button className="px-2 py-1  bg-blue-500 rounded-lg text-white flex items-center gap-1 cursor-pointer hover:bg-blue-600">
+                <button
+                  onClick={() => dispatch(addToCart(product))}
+                  className="px-2 py-1  bg-blue-500 rounded-lg text-white flex items-center gap-1 cursor-pointer hover:bg-blue-600"
+                >
                   Add{" "}
                   <span className="hidden sm:block">
                     {" "}
