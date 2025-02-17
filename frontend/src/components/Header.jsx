@@ -54,9 +54,11 @@ export default function Header() {
             <Search size={22} className="text-gray-600" />
           </div>
           <div className="flex justify-between items-center gap-6">
-            <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
-              <User /> Account
-            </button>
+            <Link to="/account">
+              <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
+                <User /> Account
+              </button>
+            </Link>
             <button className="flex items-center gap-1 text-lg font-normal hover:text-blue-600 cursor-pointer">
               <Heart /> Wishlist
             </button>

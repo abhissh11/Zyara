@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import CategoryPage from "./pages/CategoryPage";
 import Cart from "./pages/Cart";
+import UserAccout from "./pages/UserAccout";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/categories" element={<CategoryPage />} />
+        <Route path="/account" element={<UserAccout />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>

@@ -53,14 +53,14 @@ export default function ProductByCat({ category }) {
                 {product.description}
               </p>
               <div className="flex gap-2 justify-between items-center w-full">
-                <p className="text-lg font-semibold text-gray-800">
-                  ₹ {product.price}
+                <p className="text-base font-semibold text-gray-700">
+                  ₹{product.price}
                 </p>
               </div>
               <div className="flex justify-between items-center gap-1">
                 <button
                   onClick={() => handleAddToCart(product)}
-                  className="px-1 md:px-4 py-2 bg-blue-500 rounded-md text-white flex items-center gap-1 cursor-pointer hover:bg-blue-600"
+                  className="px-3 md:px-4 py-2 bg-blue-500 rounded-md text-white flex items-center gap-1 cursor-pointer hover:bg-blue-600"
                 >
                   Add
                   <span className="hidden sm:block">
