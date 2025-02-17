@@ -12,8 +12,8 @@ export default function Cart() {
     <div className="max-w-xl mx-auto p-6 pt-20 sm:pt-40 mb-28 min-h-[60svh] flex flex-col items-center justify-center bg-gray-100 rounded-xl">
       <h1 className="text-2xl font-bold my-14">Your Shopping Bag</h1>
       {cartItems.length === 0 ? (
-        <p className="text-lg- font-normal">
-          Your cart is empty! Add your next buy
+        <p className="text-lg font-normal text-gray-700">
+          Your Cart is Empty! Let's add your next faviorates..
         </p>
       ) : (
         <div className="w-full flex flex-col justify-center items-center">

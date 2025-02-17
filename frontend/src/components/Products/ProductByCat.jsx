@@ -1,19 +1,38 @@
-import { ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 import useProductByCategory from "../../customHooks/useProductsByCategory";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import toastify styles
 
 export default function ProductByCat({ category }) {
   const { products, loading, error } = useProductByCategory(`${category}`);
-
   const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+
+    // Show success toast
+    toast.success(`${product.name} added to cart!`, {
+      position: "bottom-right",
+      autoClose: 2000, // Close after 2 seconds
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      style: { background: "#155dfc", color: "#fff" },
+    });
+  };
 
   if (loading) return <p>Loading products...</p>;
   if (error) return <p>Error fetching products: {error}</p>;
 
   return (
-    <div className="">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
+    <div>
+      <ToastContainer /> {/* Toast container must be inside the component */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
         {products.map((product) => (
           <div
             key={product._id}
@@ -26,7 +45,7 @@ export default function ProductByCat({ category }) {
                 className="w-full h-48 rounded-sm text-xs text-gray-400"
               />
             </div>
-            <div className="w-full flex flex-col agp-2">
+            <div className="w-full flex flex-col gap-2">
               <h3 className="text-lg font-semibold text-gray-900">
                 {product.name}
               </h3>
@@ -37,15 +56,20 @@ export default function ProductByCat({ category }) {
                 <p className="text-lg font-semibold text-gray-800">
                   ₹ {product.price}
                 </p>
+              </div>
+              <div className="flex justify-between items-center gap-1">
                 <button
-                  onClick={() => dispatch(addToCart(product))}
-                  className="px-2 py-1  bg-blue-500 rounded-lg text-white flex items-center gap-1 cursor-pointer hover:bg-blue-600"
+                  onClick={() => handleAddToCart(product)}
+                  className="px-1 md:px-4 py-2 bg-blue-500 rounded-md text-white flex items-center gap-1 cursor-pointer hover:bg-blue-600"
                 >
-                  Add{" "}
+                  Add
                   <span className="hidden sm:block">
-                    {" "}
-                    <ShoppingCart />{" "}
+                    <ShoppingCart />
                   </span>
+                </button>
+
+                <button className="px-1 md:px-4 py-2 border border-gray-300 rounded-sm flex items-center group cursor-pointer">
+                  <Heart className="text-gray-600 group-hover:text-pink-600" />
                 </button>
               </div>
             </div>
