@@ -65,7 +65,9 @@ export const signInUser = async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email })
+      .populate("orders")
+      .populate("addresses");
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -89,7 +91,7 @@ export const signInUser = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: 3600000,
+      maxAge: 2 * 24 * 60 * 60 * 1000,
     });
 
     res.status(200).json({
@@ -100,6 +102,8 @@ export const signInUser = async (req, res) => {
         lastName: user.lastName,
         email: user.email,
         role: user.role,
+        orders: user.orders,
+        addresses: user.addresses,
       },
     });
   } catch (error) {

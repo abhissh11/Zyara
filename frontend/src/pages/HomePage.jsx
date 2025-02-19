@@ -67,7 +67,7 @@ export default function HomePage() {
     },
   ];
   return (
-    <div className="pt-24 sm:pt-32">
+    <div className="w-full pt-24 sm:py-32">
       <div className="p-4 md:p-10 flex flex-col items-center justify-center ">
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 w-full">
           <div className=" bg-blue-500 px-10 py-5 rounded-2xl flex justify-between items-center">
@@ -140,7 +140,7 @@ export default function HomePage() {
             Discover what's popular right now
           </p>
         </div>
-        <div className="flex flex-col gap-8">
+        <div className="w-full md:px-12 flex flex-col gap-8">
           <ProductByCat category={"apparels"} />
           <ProductByCat category={"books"} />
         </div>
