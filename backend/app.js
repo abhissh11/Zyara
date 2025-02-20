@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 app.use("/api/products", productRoutes);
 app.use("/api/upload", uploadImgRoutes);
 app.use("/api/user", userRoutes);
-app.use("/api/order", orderRoutes);
+app.use("/api/orders", orderRoutes);
 
 const PORT = 3000;
 

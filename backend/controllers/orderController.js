@@ -1,5 +1,6 @@
 import Product from "../models/Product-model.js";
 import Order from "../models/Order-model.js";
+import User from "../models/User-model.js";
 import { v4 as uuidv4 } from "uuid";
 
 export const createOrder = async (req, res) => {
@@ -86,5 +87,55 @@ export const createOrder = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
     console.log(error);
+  }
+};
+
+//get orders for the user
+
+export const getUserOrders = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    if (!userId) {
+      return res.status(400).json({ message: "UserId is required" });
+    }
+
+    const orders = await Order.find({ user: userId })
+      .populate("user", "name, email")
+      .populate("items.product");
+
+    if (orders.length === 0) {
+      return res.status(404).json("message: No orders found");
+    }
+
+    res.status(200).json({ message: "Orders fetched successfully", orders });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+// get all orders for admins
+
+export const getAllOrders = async (req, res) => {
+  try {
+    if (!req.user || req.user.role !== "admin") {
+      return res
+        .status(403)
+        .json({ message: "Access denied. Only admins are allowed." });
+    }
+
+    const orders = await Order.find()
+      .populate("user", "name email")
+      .populate("items.product", "name price");
+
+    if (orders.length === 0) {
+      return res.status(404).json({ message: "No orders found" });
+    }
+
+    res.status(200).json({ message: "Orders fetched successfully", orders });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
   }
 };
