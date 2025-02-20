@@ -73,7 +73,7 @@ export default function UserAccout() {
           {/* Logout Button */}
           <button
             onClick={handleLogout}
-            className="w-full bg-red-500 text-white py-2 mt-4 rounded-md hover:bg-red-500 cursor-pointer"
+            className="w-full bg-red-500 text-white py-2 mt-4 rounded-md hover:bg-red-600 cursor-pointer"
           >
             Logout
           </button>

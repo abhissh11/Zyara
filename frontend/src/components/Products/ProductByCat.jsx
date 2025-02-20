@@ -33,7 +33,7 @@ export default function ProductByCat({ category }) {
       {loading ? (
         // Show skeleton loaders when loading
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4 md:gap-6">
-          {Array.from({ length: 6 }).map((_, index) => (
+          {Array.from({ length: 10 }).map((_, index) => (
             <ProductSkeleton key={index} />
           ))}
         </div>

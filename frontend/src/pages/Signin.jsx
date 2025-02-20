@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "./../utils/constants";
 import { signInSuccess } from "../redux/slices/authSlice";
 
@@ -56,11 +56,19 @@ export default function Signin() {
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+            className="w-full px-4 py-2 text-white bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600"
           >
             Sign In
           </button>
         </form>
+        <div className="py-1">
+          <p>
+            don't have an account?{" "}
+            <Link to="/signup">
+              <span className="text-blue-600 hover:underline">Signup</span>
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

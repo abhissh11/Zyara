@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BASE_API_URL } from "../utils/constants";
+import { Link } from "react-router";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -188,6 +189,14 @@ export default function Signup() {
             Sign Up
           </button>
         </form>
+        <div className="py-1">
+          <p>
+            Already have an account?
+            <Link to="/signin">
+              <span className="text-blue-600 hover:underline"> Signin</span>
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

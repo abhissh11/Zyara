@@ -6,6 +6,7 @@ import { connectDB } from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
 import uploadImgRoutes from "./routes/uploadImgRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 app.use("/api/products", productRoutes);
 app.use("/api/upload", uploadImgRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/order", orderRoutes);
 
 const PORT = 3000;
 
