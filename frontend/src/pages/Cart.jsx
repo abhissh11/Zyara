@@ -20,7 +20,7 @@ export default function Cart() {
           {cartItems &&
             cartItems.map((item, index) => (
               <div
-                key={item.id}
+                key={index}
                 className="p-4 rounded-lg flex gap-4 justify-between items-center mb-4 shadow-md border border-gray-200 hover:-translate-y-1 duration-100 cursor-pointer w-full"
               >
                 <img

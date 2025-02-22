@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { logout } from "../redux/slices/authSlice";
+import UserOrders from "../components/UserOrders";
 
 export default function UserAccout() {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ export default function UserAccout() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg py-48">
+    <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg py-28 md:py-48">
       <h2 className="text-2xl font-bold text-center mb-4">Account Details</h2>
 
       {isAuthenticated && user ? (
@@ -55,19 +56,7 @@ export default function UserAccout() {
           {/* Order History Section */}
           <div>
             <p className="font-semibold">Order History:</p>
-            {user.orders && user.orders.length > 0 ? (
-              <ul className="list-disc pl-5">
-                {user.orders.map((order, index) => (
-                  <li key={index}>
-                    <p>Order ID: {order._id}</p>
-                    <p>Total: ₹{order.totalAmount}</p>
-                    <p>Status: {order.status}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No orders placed yet</p>
-            )}
+            <UserOrders />
           </div>
 
           {/* Logout Button */}
