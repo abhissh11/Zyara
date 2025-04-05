@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://zyara-backend.onrender.com/api",
   withCredentials: true,
 });
 
-export const BASE_API_URL = "http://localhost:3000";
+export const BASE_API_URL = "https://zyara-backend.onrender.com";
