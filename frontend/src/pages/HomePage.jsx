@@ -11,7 +11,6 @@ import {
   Volleyball,
 } from "lucide-react";
 import ProductByCat from "../components/Products/ProductByCat";
-// import ElectronicsProducts from "../components/Products/ElectronicsProducts";
 import { Link } from "react-router";
 
 export default function HomePage() {

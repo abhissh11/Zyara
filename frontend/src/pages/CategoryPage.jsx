@@ -5,7 +5,7 @@ import ProductByCat from "../components/Products/ProductByCat";
 export default function CategoryPage() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const categoryName = searchParams.get("name"); //Extract the category name from url
+  const categoryName = searchParams.get("name");
 
   return (
     <div className="py-16 md:py-44 px-6 sm:px-20">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { BASE_API_URL } from "../../utils/constants";
 
 export default function PostProduct() {
   const [product, setProduct] = useState({
@@ -35,7 +36,7 @@ export default function PostProduct() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/upload",
+        `${BASE_API_URL}/api/upload`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -77,7 +78,7 @@ export default function PostProduct() {
     };
 
     try {
-      await axios.post("http://localhost:3000/api/products/create", newProduct);
+      await axios.post(`${BASE_API_URL}/api/products/create`, newProduct);
       alert("Product added successfully!");
     } catch (error) {
       console.error("Error adding product:", error);
