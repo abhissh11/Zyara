@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BASE_API_URL } from "../utils/constants";
+import { axiosInstance } from "../utils/constants";
 
 const useProductByCategory = (category) => {
   const [loading, setLoading] = useState(true);
@@ -9,13 +9,8 @@ const useProductByCategory = (category) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`${BASE_API_URL}/api/products/${category}`);
-        if (!res.ok) {
-          throw new Error("Failed to fetch products");
-        }
-        const data = await res.json();
-        setProducts(data);
-        // console.log(products);
+        const res = await axiosInstance.get(`/products/${category}`);
+        setProducts(res.data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -24,6 +19,7 @@ const useProductByCategory = (category) => {
     };
     fetchProducts();
   }, [category]);
+
   return { products, loading, error };
 };
 

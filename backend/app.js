@@ -11,7 +11,11 @@ import orderRoutes from "./routes/orderRoutes.js";
 dotenv.config();
 const app = express();
 
-const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://zyara.vercel.app",
+];
 
 // middlewares
 // app.use(cors());
